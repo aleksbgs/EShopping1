@@ -21,7 +21,7 @@ namespace Catalog.Core.Entities
 
         public ProductBrand Brands { get; set; }
 
-        public ProductType Types { get; set; }
+        public Product Types { get; set; }
         
         [BsonRepresentation(BsonType.Decimal128)]
 
