@@ -1,8 +1,6 @@
 ﻿namespace Catalog.API
 {
 
-
-
     public class Startup
     {
         public IConfiguration Configuration;

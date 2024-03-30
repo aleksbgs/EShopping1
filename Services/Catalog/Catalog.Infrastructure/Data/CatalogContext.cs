@@ -32,8 +32,6 @@ namespace Catalog.Infrastructure.Data
 
             Products = database.GetCollection<Product>(configuration.GetValue<string>("DatabaseSettings:ProductsCollection"));
 
-
-
             BrandContextSeed.SeedData(Brands);
             
             TypeContextSeed.SeedData(Types);
