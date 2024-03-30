@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Catalog.Infrastructure
+namespace Catalog.Infrastructure.Data.SeedData
 {
     public static class BrandContextSeed
     {

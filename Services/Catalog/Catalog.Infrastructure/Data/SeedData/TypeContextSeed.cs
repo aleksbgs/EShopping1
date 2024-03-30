@@ -7,13 +7,13 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Catalog.Infrastructure
+namespace Catalog.Infrastructure.Data
 {
 
     public static class TypeContextSeed
     {
 
-        public static void SeedData(IMongoCollection<Product> typeCollection)
+        public static void SeedData(IMongoCollection<ProductType> typeCollection)
         {
 
             bool checkTypes = typeCollection.Find(b => true).Any();
@@ -24,7 +24,7 @@ namespace Catalog.Infrastructure
             {
                 var typesData = File.ReadAllText(path);
 
-                var types = JsonSerializer.Deserialize<List<Product>>(typesData);
+                var types = JsonSerializer.Deserialize<List<ProductType>>(typesData);
 
                 if (types != null)
                 {
