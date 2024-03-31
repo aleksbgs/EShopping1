@@ -2,11 +2,7 @@
 using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Data;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Catalog.Infrastructure.Repositories
 {
@@ -20,10 +16,10 @@ namespace Catalog.Infrastructure.Repositories
         }
 
 
-        public async Task<Product> CreateProduct(Product product)
+        public async Task<Product> CreateProduct(Product productType)
         {
-            await _context.Products.InsertOneAsync(product);
-            return product;
+            await _context.Products.InsertOneAsync(productType);
+            return productType;
         }
 
         public async Task<bool> DeleteProduct(string id)
@@ -91,11 +87,11 @@ namespace Catalog.Infrastructure.Repositories
                  .ToListAsync();
         }
 
-        public async Task<bool> UpdateProduct(Product product)
+        public async Task<bool> UpdateProduct(Product productType)
         {
             var updateResult = await _context
                  .Products
-                 .ReplaceOneAsync(p => p.Id == product.Id, product);
+                 .ReplaceOneAsync(p => p.Id == productType.Id, productType);
             return updateResult.IsAcknowledged && updateResult.ModifiedCount > 0;
 
         }

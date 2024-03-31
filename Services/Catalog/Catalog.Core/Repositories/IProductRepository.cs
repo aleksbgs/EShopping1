@@ -14,9 +14,9 @@ namespace Catalog.Core.Repositories
 
         Task<IEnumerable<Product>> GetProductByBrand(string name);
 
-        Task<Product> CreateProduct(Product product);
+        Task<Product> CreateProduct(Product productType);
 
-        Task<bool> UpdateProduct(Product product);
+        Task<bool> UpdateProduct(Product productType);
 
         Task<bool> DeleteProduct(string id);
     
