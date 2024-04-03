@@ -18,10 +18,14 @@ namespace Catalog.Infrastructure.Data
 
             bool checkTypes = typeCollection.Find(b => true).Any();
 
+           //Container path
             string path = Path.Combine("Data", "SeedData", "types.json");
 
             if (!checkTypes)
             {
+                //local path
+                //var data = File.ReadAllText("../Catalog.Infrastructure/Data/SeedData/types.json");
+                
                 var typesData = File.ReadAllText(path);
 
                 var types = JsonSerializer.Deserialize<List<ProductType>>(typesData);
