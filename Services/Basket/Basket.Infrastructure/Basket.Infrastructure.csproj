@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Catalog\Basket.Application\Basket.Application.csproj" />
+    <ProjectReference Include="..\Basket.Core\Basket.Core.csproj" />
   </ItemGroup>
 	
 	    

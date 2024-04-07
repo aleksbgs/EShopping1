@@ -29,7 +29,7 @@ namespace Basket.API.Controllers
             return Ok(basket);
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route("[action]/{userName}", Name = "DeleteBasketByUserName")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
 
