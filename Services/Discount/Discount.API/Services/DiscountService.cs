@@ -25,7 +25,7 @@ namespace Discount.API.Services
             var result = await _mediator.Send(query);
 
             _logger.LogInformation(
-                $"Discount is retreivec for the Product Name: {request.ProductName} and Amount : {result.Amount}");
+                $"Discount is retreive for the Product Name: {request.ProductName} and Amount : {result.Amount}");
 
             return result;
         }
