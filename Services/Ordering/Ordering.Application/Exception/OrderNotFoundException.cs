@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ordering.Application.Extensions
+namespace Ordering.Application.Exception
 {
     public class OrderNotFoundException : ApplicationException
     {
