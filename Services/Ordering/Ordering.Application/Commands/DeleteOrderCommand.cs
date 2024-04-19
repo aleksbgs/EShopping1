@@ -11,10 +11,5 @@ namespace Ordering.Application.Commands
     {
         public int Id { get; set; }
 
-
-        public DeleteOrderCommand(int id)
-        {
-            Id = id;
-        }
     }
 }
