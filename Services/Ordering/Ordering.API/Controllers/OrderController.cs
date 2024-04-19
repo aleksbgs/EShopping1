@@ -35,7 +35,7 @@ namespace Ordering.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost(Name = "UpdateOrder")]
+        [HttpPut(Name = "UpdateOrder")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> UpdateOrder([FromBody] UpdateOrderCommand command)
@@ -43,7 +43,7 @@ namespace Ordering.API.Controllers
             var result = await _mediator.Send(command);
             return NoContent();
         }
-        [HttpPost("{id}",Name="DeleteOrder")]
+        [HttpDelete("{id}",Name="DeleteOrder")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> DeleteOrder(int id)
