@@ -102,3 +102,14 @@ services:
     ports:
       - "9003:80"
 
+
+  ocelot.apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - catalog.api
+      - basket.api
+      - discount.api
+      - ordering.api
+    ports:
+      - "9010:80"
