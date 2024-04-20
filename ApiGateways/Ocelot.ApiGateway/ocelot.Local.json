@@ -186,7 +186,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "9004"
+          "Port": "9003"
         }
       ],
       "UpstreamPathTemplate": "/Order/{userName}",

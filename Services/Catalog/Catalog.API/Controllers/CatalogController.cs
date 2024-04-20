@@ -8,24 +8,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Catalog.API.Controllers
 {
+
     public class CatalogController : ApiController
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<CatalogController> _logger;
+ 
 
-        public CatalogController(IMediator mediator)
+        public CatalogController(IMediator mediator, ILogger<CatalogController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet]
         [Route("[action]/{id}", Name = "GetProductById")]
         [ProducesResponseType(typeof(ProductResponse), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<ProductResponse>> GetProductId(string id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<ProductResponse>> GetProductById(string id)
         {
             var query = new GetProductByIdQuery(id);
-
             var result = await _mediator.Send(query);
-
             return Ok(result);
         }
 
@@ -35,23 +38,27 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<IList<ProductResponse>>> GetProductByProductName(string productName)
         {
             var query = new GetProductByNameQuery(productName);
-
             var result = await _mediator.Send(query);
-
             return Ok(result);
         }
 
-
         [HttpGet]
-        [Route("GetAllProduct")]
+        [Route("GetAllProducts")]
         [ProducesResponseType(typeof(IList<ProductResponse>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IList<ProductResponse>>> GetAllProducts([FromQuery]CatalogSpecParams catalogSpecParams)
+        public async Task<ActionResult<IList<ProductResponse>>> GetAllProducts([FromQuery] CatalogSpecParams catalogSpecParams)
         {
-            var query = new GetAllProductsQueries(catalogSpecParams) ;
-
-            var result = await _mediator.Send(query);
-
-            return Ok(result);
+            try
+            {
+                var query = new GetAllProductsQueries(catalogSpecParams);
+                var result = await _mediator.Send(query);
+                _logger.LogInformation("All products retrieved");
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "An Exception has occured: {Exception}");
+                throw;
+            }
         }
 
         [HttpGet]
@@ -60,9 +67,7 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<IList<BrandResponse>>> GetAllBrands()
         {
             var query = new GetAllBrandsQuery();
-
             var result = await _mediator.Send(query);
-
             return Ok(result);
         }
 
@@ -72,21 +77,17 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<IList<TypesResponse>>> GetAllTypes()
         {
             var query = new GetAllTypesQuery();
-
             var result = await _mediator.Send(query);
-
             return Ok(result);
         }
 
         [HttpGet]
-        [Route("[action]/{brand}", Name = "GetProductByBrandName")]
+        [Route("[action]/{brand}", Name = "GetProductsByBrandName")]
         [ProducesResponseType(typeof(IList<ProductResponse>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IList<ProductResponse>>> GetProductByBrandName(string brand)
+        public async Task<ActionResult<IList<ProductResponse>>> GetProductsByBrandName(string brand)
         {
             var query = new GetProductByBrandQuery(brand);
-
             var result = await _mediator.Send(query);
-
             return Ok(result);
         }
 
@@ -96,38 +97,26 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<ProductResponse>> CreateProduct([FromBody] CreateProductCommand productCommand)
         {
             var result = await _mediator.Send(productCommand);
-
             return Ok(result);
         }
 
         [HttpPut]
         [Route("UpdateProduct")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductCommand updateCommand)
+        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductCommand productCommand)
         {
-            var result = await _mediator.Send(updateCommand);
-
+            var result = await _mediator.Send(productCommand);
             return Ok(result);
         }
-
         [HttpDelete]
         [Route("{id}", Name = "DeleteProduct")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> DeleteProduct(string id)
         {
             var query = new DeleteProductByIdCommand(id);
-
             var result = await _mediator.Send(query);
-
             return Ok(result);
         }
-
-
-
-
-
-
-
-
     }
+
 }
