@@ -1,0 +1,14 @@
+openssl req -x509 -nodes -newkey rsa:2048 -keyout C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.key -out C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.crt -days 365 -config C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id.local.conf
+
+
+
+openssl pkcs12 -export -out C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.pfx -inkey C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.key -in C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.crt
+
+
+
+
+
+
+
+
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
