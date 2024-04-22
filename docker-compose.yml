@@ -48,10 +48,17 @@ services:
       context: .
       dockerfile: ApiGateways/Ocelot.ApiGateway/Dockerfile
 
+  eshopping.identity:
+    image: ${DOCKER_REGISTRY-}eshoppingidentity
+    build:
+      context: .
+      dockerfile: Infrastructure/EShopping.Identity/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
   postgres_data:
+
 
 
 

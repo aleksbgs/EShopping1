@@ -20,7 +20,10 @@ namespace EShopping.Identity
             new ApiScope[]
             {
                 new ApiScope("catalogapi"),
-                new ApiScope("basketapi")
+                new ApiScope("basketapi"),
+                new ApiScope("catalogapi.read"),
+                new ApiScope("catalogapi.write"),
+                new ApiScope("eshoppinggateway")
             };
 
 
@@ -30,11 +33,15 @@ namespace EShopping.Identity
                 //List of Microservices can go here
                 new ApiResource("Catalog", "Catalog.API")
                 {
-                    Scopes = { "catalogapi" }
+                    Scopes = { "catalogapi.read", "catalogapi.write" }
                 },
                 new ApiResource("Basket", "Basket.API")
                 {
                     Scopes = { "basketapi" }
+                },
+                new ApiResource("EShoppingGateway", "EShopping Gateway")
+                {
+                    Scopes = { "eshoppinggateway" }
                 }
             };
 
@@ -48,7 +55,23 @@ namespace EShopping.Identity
                     ClientId = "CatalogApiClient",
                     ClientSecrets = { new Secret("12345".Sha256()) },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = { "catalogapi","basketapi"}
+                    AllowedScopes =  { "catalogapi.read", "catalogapi.write" }
+                },
+                new Client
+                {
+                    ClientName = "Basket API Client",
+                    ClientId = "BasketApiClient",
+                    ClientSecrets = { new Secret("12345".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AllowedScopes = { "basketapi" }
+                }, 
+                new Client
+                {
+                    ClientName = "EShopping Gateway Client",
+                    ClientId = "EShoppingGatewayClient",
+                    ClientSecrets = { new Secret("12345".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AllowedScopes = { "eshoppinggateway" }
                 }
 
 

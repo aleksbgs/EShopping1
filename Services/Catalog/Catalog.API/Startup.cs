@@ -54,10 +54,7 @@ namespace Catalog.API
                 .RequireAuthenticatedUser()
                 .Build();
 
-            services.AddControllers(config =>
-            {
-                config.Filters.Add(new AuthorizeFilter(userPolicy));
-            });
+            services.AddControllers(config => { config.Filters.Add(new AuthorizeFilter(userPolicy)); });
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -67,6 +64,10 @@ namespace Catalog.API
                     options.Audience = "Catalog";
 
                 });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("CanRead", policy => policy.RequireClaim("scope", "catalogapi.read"));
+            });
 
         }
 
