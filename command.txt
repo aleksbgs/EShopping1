@@ -1,11 +1,8 @@
-openssl req -x509 -nodes -newkey rsa:2048 -keyout C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.key -out C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.crt -days 365 -config C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id.local.conf
+openssl req -x509 -nodes -newkey rsa:2048 -keyout C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.eshopping.com.key -out C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.eshopping.com.crt -days 365 -config C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id.local.conf
 
 
 
-openssl pkcs12 -export -out C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.pfx -inkey C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.key -in C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.crt
-
-
-
+openssl pkcs12 -export -out C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.eshopping.com.pfx -inkey C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.eshopping.com.key -in C:\Users\aleksandar.markovic\Desktop\EShopping\ApiGateways\nginx\id-local.eshopping.com.crt
 
 
 
