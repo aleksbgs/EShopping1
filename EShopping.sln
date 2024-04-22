@@ -61,9 +61,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{60680569
 	ProjectSection(SolutionItems) = preProject
 		command.txt = command.txt
 		ApiGateways\nginx\Dockerfile = ApiGateways\nginx\Dockerfile
-		ApiGateways\nginx\id-local.crt = ApiGateways\nginx\id-local.crt
-		ApiGateways\nginx\id-local.key = ApiGateways\nginx\id-local.key
-		ApiGateways\nginx\id-local.pfx = ApiGateways\nginx\id-local.pfx
+		ApiGateways\nginx\id-local.eshopping.com.crt = ApiGateways\nginx\id-local.eshopping.com.crt
+		ApiGateways\nginx\id-local.eshopping.com.key = ApiGateways\nginx\id-local.eshopping.com.key
+		ApiGateways\nginx\id-local.eshopping.com.pfx = ApiGateways\nginx\id-local.eshopping.com.pfx
 		ApiGateways\nginx\id.local.conf = ApiGateways\nginx\id.local.conf
 		ApiGateways\nginx\nginx.local.conf = ApiGateways\nginx\nginx.local.conf
 	EndProjectSection
