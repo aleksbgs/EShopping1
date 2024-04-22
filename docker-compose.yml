@@ -48,11 +48,16 @@ services:
       context: .
       dockerfile: ApiGateways/Ocelot.ApiGateway/Dockerfile
 
-  eshopping.identity:
+  identityserver:
     image: ${DOCKER_REGISTRY-}eshoppingidentity
     build:
       context: .
       dockerfile: Infrastructure/EShopping.Identity/Dockerfile
+  
+  nginx:
+    build:
+     context: .
+     dockerfile: ApiGateways/nginx/Dockerfile
 
 volumes:
   mongo_data:

@@ -1,6 +1,8 @@
-﻿using Ocelot.Cache.CacheManager;
+﻿using Microsoft.AspNetCore.HttpOverrides;
+using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using ForwardedHeadersOptions = Microsoft.AspNetCore.Builder.ForwardedHeadersOptions;
 
 namespace Ocelot.ApiGateway
 {
@@ -16,6 +18,15 @@ namespace Ocelot.ApiGateway
 
         public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            var forwardedHeaderOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            };
+
+            forwardedHeaderOptions.KnownNetworks.Clear();
+            forwardedHeaderOptions.KnownProxies.Clear();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
