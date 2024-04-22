@@ -12,7 +12,7 @@ services:
       - discount.api
       - ordering.api
     ports:
-      - "44344:443"
+      - "44344:44344"
 
   catalogdb:
     container_name: catalogdb
@@ -56,8 +56,6 @@ services:
         - "5672:5672"
         - "15672:15672"
   
-     
-
   portainer:
      container_name: portainer
      restart: always
@@ -72,7 +70,7 @@ services:
     container_name: catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-#      - ASPNETCORE_URLS=http://*:9000
+      - ASPNETCORE_URLS=http://*:9000
       - "DatabaseSettings__ConnectionString=mongodb://catalogdb:27017"
       - "DatabaseSettings__DatabaseName=CatalogDb"
       - "DatabaseSettings__ProductsCollection=Products"
@@ -87,6 +85,7 @@ services:
     container_name: basket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:9001
       - "CacheSettings__ConnectionString=basketdb:6379"
       - "GrpcSettings__DiscountUrl=http://discount.api"
       - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
@@ -99,6 +98,7 @@ services:
   discount.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:9002
       - "DatabaseSettings__ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
     depends_on:
       - discountdb
@@ -108,6 +108,7 @@ services:
   ordering.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://*:9003
       - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=admin1234"
       - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
