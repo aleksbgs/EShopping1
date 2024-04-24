@@ -54,7 +54,7 @@ services:
       context: .
       dockerfile: Infrastructure/EShopping.Identity/Dockerfile
   
-  nginx:
+  reverseproxy:
     build:
      context: .
      dockerfile: ApiGateways/nginx/Dockerfile

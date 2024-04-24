@@ -2,8 +2,8 @@ version: '3.4'
 
 services:
  
-  nginx:
-    container_name: nginx
+  reverseproxy:
+    container_name: nginxgateway
     restart: always
     depends_on:
       - identityserver
@@ -12,7 +12,7 @@ services:
       - discount.api
       - ordering.api
     ports:
-      - "44344:44344"
+      - "44344:44344"  
 
   catalogdb:
     container_name: catalogdb
