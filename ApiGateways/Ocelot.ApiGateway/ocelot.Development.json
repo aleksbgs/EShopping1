@@ -2,6 +2,19 @@
   "Routes": [
     //Catalog API
     {
+      "DownstreamPathTemplate": "/swagger/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": "9000"
+        }
+      ],
+      "UpstreamPathTemplate": "/Catalog/swagger",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
       "DownstreamPathTemplate": "/api/v1/Catalog",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

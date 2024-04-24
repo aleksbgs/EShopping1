@@ -51,7 +51,7 @@ namespace Catalog.API.Controllers
             {
                 var query = new GetAllProductsQueries(catalogSpecParams);
                 var result = await _mediator.Send(query);
-                _logger.LogInformation("All products retrieved");
+                _logger.LogInformation("GetAllProducts All products retrieved");
                 return Ok(result);
             }
             catch (Exception e)
