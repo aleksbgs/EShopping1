@@ -3,6 +3,7 @@ using Catalog.Application.Handlers;
 using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Data;
 using Catalog.Infrastructure.Repositories;
+using Common.Logging.Correlation;
 using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -40,6 +41,7 @@ namespace Catalog.API
             //DI
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(CreateProductHandler).GetTypeInfo().Assembly);
+            services.AddScoped<ICorrelationIdGenerator, CorrelationIdGenerator>();
             services.AddScoped<ICatalogContext, CatalogContext>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IBrandRepository, ProductRepository>();

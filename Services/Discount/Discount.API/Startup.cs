@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Common.Logging.Correlation;
 using Discount.API.Services;
 using Discount.Application;
 using Discount.Application.Handlers;
@@ -14,6 +15,7 @@ namespace Discount.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(typeof(CreateDiscountCommandHandler).GetTypeInfo().Assembly);
+            services.AddScoped<ICorrelationIdGenerator, CorrelationIdGenerator>();
             services.AddScoped<IDiscountRepository, DiscountRepository>();
             services.AddAutoMapper(typeof(Startup));
 

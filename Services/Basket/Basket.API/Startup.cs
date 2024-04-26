@@ -3,6 +3,7 @@ using Basket.Application.GrpcService;
 using Basket.Application.Handlers;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
+using Common.Logging.Correlation;
 using Discount.Application;
 using HealthChecks.UI.Client;
 using MassTransit;
@@ -36,6 +37,7 @@ namespace Basket.API
 
             services.AddScoped<IBasketRepository, BasketRepository>();
 
+            services.AddScoped<ICorrelationIdGenerator, CorrelationIdGenerator>();
             services.AddAutoMapper(typeof(Startup));
 
             services.AddScoped<DiscountGrpcService>();
