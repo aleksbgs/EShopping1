@@ -1,0 +1,93 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.4"
+services:
+  basket.api:
+    build:
+      context: "/Users/admin/Desktop/C#"
+      dockerfile: "Services/Basket/Basket.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net6.0/Basket.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "basketapi:dev"
+    ports: []
+    volumes:
+    - "/Users/admin/.nuget/packages:/root/.nuget/packages"
+    - "/Users/admin/Desktop/C#/Services/Basket/Basket.API:/app:rw"
+    - "/Users/admin/Desktop/C#:/src:rw"
+    working_dir: "/app"
+  catalog.api:
+    build:
+      context: "/Users/admin/Desktop/C#"
+      dockerfile: "Services/Catalog/Catalog.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net6.0/Catalog.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "catalogapi:dev"
+    ports: []
+    volumes:
+    - "/Users/admin/.nuget/packages:/root/.nuget/packages"
+    - "/Users/admin/Desktop/C#/Services/Catalog/Catalog.API:/app:rw"
+    - "/Users/admin/Desktop/C#:/src:rw"
+    working_dir: "/app"
+  discount.api:
+    build:
+      context: "/Users/admin/Desktop/C#"
+      dockerfile: "Services/Discount/Discount.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net6.0/Discount.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "discountapi:dev"
+    ports: []
+    volumes:
+    - "/Users/admin/.nuget/packages:/root/.nuget/packages"
+    - "/Users/admin/Desktop/C#/Services/Discount/Discount.API:/app:rw"
+    - "/Users/admin/Desktop/C#:/src:rw"
+    working_dir: "/app"
+  ocelot.apigateway:
+    build:
+      context: "/Users/admin/Desktop/C#"
+      dockerfile: "ApiGateways/Ocelot.ApiGateway/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net6.0/Ocelot.ApiGateway.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "ocelotapigateway:dev"
+    ports: []
+    volumes:
+    - "/Users/admin/.nuget/packages:/root/.nuget/packages"
+    - "/Users/admin/Desktop/C#/ApiGateways/Ocelot.ApiGateway:/app:rw"
+    - "/Users/admin/Desktop/C#:/src:rw"
+    working_dir: "/app"
+  ordering.api:
+    build:
+      context: "/Users/admin/Desktop/C#"
+      dockerfile: "Services/Ordering/Ordering.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net6.0/Ordering.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "orderingapi:dev"
+    ports: []
+    volumes:
+    - "/Users/admin/.nuget/packages:/root/.nuget/packages"
+    - "/Users/admin/Desktop/C#/Services/Ordering/Ordering.API:/app:rw"
+    - "/Users/admin/Desktop/C#:/src:rw"
+    working_dir: "/app"
