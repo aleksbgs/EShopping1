@@ -40,7 +40,7 @@
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/Catalog/GetAllProduct",
+      "DownstreamPathTemplate": "/api/v1/Catalog/GetAllProducts",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -48,7 +48,7 @@
           "Port": "9000"
         }
       ],
-      "UpstreamPathTemplate": "/Catalog/GetAllProduct",
+      "UpstreamPathTemplate": "/Catalog/GetAllProducts",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
