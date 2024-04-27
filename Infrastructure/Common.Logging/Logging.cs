@@ -39,7 +39,7 @@ namespace Common.Logging
                         new ElasticsearchSinkOptions(new Uri(elasticUrl))
                         {
                             AutoRegisterTemplate = true,
-                            AutoRegisterTemplateVersion = AutoRegisterTemplateVersion.ESv7,
+                            AutoRegisterTemplateVersion = AutoRegisterTemplateVersion.ESv8,
                             IndexFormat = "EShopping-Logs-{0:yyyy.MM.dd}",
                             MinimumLogEventLevel = LogEventLevel.Debug
                         });
