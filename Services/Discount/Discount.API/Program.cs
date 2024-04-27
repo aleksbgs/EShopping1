@@ -21,6 +21,6 @@ public class Program
 
         Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
-            .UseSerilog(Logging.configureLogger);
+            .UseSerilog(Logging.ConfigureLogger);
 }
 

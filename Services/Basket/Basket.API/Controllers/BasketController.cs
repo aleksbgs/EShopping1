@@ -80,8 +80,8 @@ namespace Basket.API.Controllers
 
             var eventMsg = BasketMapper.Mapper.Map<BasketCheckoutEvent>(basketCheckout);
             eventMsg.TotalPrice = basketCheckout.TotalPrice;
-
-
+            eventMsg.CorrelationId = _correlationIdGenerator.Get();
+            
             await _publishEndpoint.Publish(eventMsg);
 
             // remove the basket
